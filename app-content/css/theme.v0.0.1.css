@@ -1,0 +1,37 @@
+/* 
+    Created on : 03 Jun 2016, 1:18:33 PM
+    Author     : David John Tennant - dev@homecloudsolutions.co.za | davidjohntennantwork@gmail.com - Home Cloud
+*/
+
+.lead_group {
+    margin:0 auto;
+    border: 2px solid black;
+    border-radius: 5px;
+    padding: 8px 15px;
+}
+
+.tab {
+    border-top:solid;
+    border-right:solid;
+    border-top-right-radius: 10px;
+}
+
+.tab:first-child {
+    border-left:solid;
+}
+
+.lead_tabs {
+   margin-bottom:15px;
+}
+
+.lead_group .ui-block-a {
+    width:75%;
+}
+
+.lead_group .ui-block-b {
+    width:25%;
+}
+
+.lead_group {
+    margin-bottom:10px;
+}
