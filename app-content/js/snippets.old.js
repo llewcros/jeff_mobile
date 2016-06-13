@@ -114,3 +114,60 @@ $(document).delegate("#leads", "pagebeforecreate", function () {
 });
 
 
+//Ajax Start and Stop
+$(document).loader();
+
+$(document)
+  .ajaxStart(function () {
+    alert('Ajaxstart');
+    $(document).loader("show");
+  })
+  .ajaxStop(function () {
+    alert("Ajaxstop");
+    $(document).loader("hide");
+  })
+
+
+
+//DataTables
+
+$(document).ready(function () {
+    $('#leads_table').DataTable({
+        columns: [
+            {data: 'leadid'},
+            {data: 'lastname'},
+            {data: 'firstname'},
+            {data: 'emailaddress'},
+            {data: 'contactno'},
+            {data: 'ldphysicaladdress'}
+        ],
+        paging: false,
+        order: [1, 'DESC'],
+        responsive: true
+    });
+});
+
+//======= AJAX =======
+
+//Populate Leads by Sales Person
+$(document).delegate("#leads", "pagebeforecreate", function () {
+    $.ajax({
+        type: "GET",
+        url: leadmaster,
+        dataType: 'json',
+        data: {
+            action: 'listLeadsBySalesperson',
+            salesperson: 18
+        },
+        success: function (data) {
+            var t = $('#leads_table').DataTable();
+            t.clear();
+            t.rows.add(data.leads);
+            t.draw();
+        },
+        error: function () {
+            alert("Failure : Reload page and try again");
+        }
+
+    });
+});

@@ -11,9 +11,10 @@ $(document).bind("mobileinit", "ready", function () {
 
     $.mobile.allowCrossDomainPages = true;
 
-    //Enable Scanner on ScanBars
+    //Disable Cache
     
-   
+    $.mobile.page.prototype.options.domCache = true;
+
 });
 
 //Global Links
@@ -42,23 +43,34 @@ $(document).delegate("#index", "pagebeforecreate", function () {
     $("#footerMaster").clone().appendTo(".footerChild");
 });
 
-//======= AJAX =======
+//DataTables
 
-//Ajax Start and Stop
-//$(document).loader();
-//
-//$(document)
-//  .ajaxStart(function () {
-//    alert('Ajaxstart');
-//    $(document).loader("show");
-//  })
-//  .ajaxStop(function () {
-//    alert("Ajaxstop");
-//    $(document).loader("hide");
-//  });
-  
-//Populate Leads by Sales Person
-$(document).delegate("#leads", "pagebeforecreate", function () {
+
+
+$(document).on("pageshow", "#leads", function () {
+
+    if ($.fn.DataTable.isDataTable('#leads_table')) {
+        $('#leads_table').DataTable().columns.adjust();
+        return;
+    }
+
+    $('#leads_table').dataTable({
+        columns: [
+            {data: 'leadid'},
+            {data: 'lastname'},
+            {data: 'firstname'},
+            {data: 'emailaddress'},
+            {data: 'contactno'},
+            {data: 'ldphysicaladdress'}
+        ],
+        scrollX: true,
+        scrollXollapse: true,
+        pagingType: "full",
+        paging: true,
+        order: [1, 'DESC'],
+//        responsive: true
+    });
+    
     $.ajax({
         type: "GET",
         url: leadmaster,
@@ -68,17 +80,21 @@ $(document).delegate("#leads", "pagebeforecreate", function () {
             salesperson: 18
         },
         success: function (data) {
-            var dlist_output = $("#leads_list");
-
-            $.each(data.leads, function (i, e) {
-                dlist_output.append('<div id="leads_list"><div leadid="'+e.leadid+'" class="lead_group"><div class="ui-grid-solo"><div class="ui-block-a">'+e.firstname+' '+e.lastname+'</div></div><div class="ui-grid-solo"><div class="ui-block-a">Contact Number: '+e.contactno+'</div></div><div class="ui-grid-solo"><div class="ui-block-a">Email Address: '+e.emailaddress+'</div></div><div class="ui-grid-solo"><div class="ui-block-a">Address: '+e.ldphysicaladdress+'</div></div></div></div>');
-            });
+            var t = $('#leads_table').DataTable();
+            t.clear();
+            t.rows.add(data.leads);
+            t.draw();
         },
         error: function () {
             alert("Failure : Reload page and try again");
         }
-        
+
     });
 });
+
+$(document).on("pageremove", function (event) {
+    $('#leads_table').DataTable().destroy(false);
+});
+
 
 

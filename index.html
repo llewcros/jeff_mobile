@@ -5,13 +5,18 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!--Scrolls-->
         <link rel="stylesheet" href="app-content/css/jquery.mobile.min.css">
-        <link rel="stylesheet" href="app-content/css/theme.v0.0.1.css">
         <link rel="stylesheet" href="app-content/css/fontawesome.min.css">
+        <link rel="stylesheet" href="app-content/css/datatables.min.css">
 
+
+        <link rel="stylesheet" href="app-content/css/theme.v0.0.1.css">
         <!--Spells-->
         <script type="text/javascript" src="app-content/js/jquery.min.js"></script>
         <script type="text/javascript" src="app-content/js/jquery.mobile.min.js"></script>
+        <script type="text/javascript" src="app-content/js/datatables.min.js"></script>
+
         <script type="text/javascript" src="app-content/js/code.v0.0.1.js"></script>
+
     </head>
     <body>
         <div data-role="page" id="login">
@@ -51,16 +56,45 @@
 
             <div data-role="main" class="ui-content">
                 <div>Some Content</div>
+                <div>Some Content</div>
+                <div>Some Content</div>
+                <div>Some Content</div>
+                <div>Some Content</div>
+                <div>Some Content</div>
+                <div>Some Content</div>
+                <div>Some Content</div>
+                <div>Some Content</div>
+                <div>Some Content</div>
+                <div>Some Content</div>
+                <div>Some Content</div>
+                <div>Some Content</div>
+                <div>Some Content</div>
+                <div>Some Content</div>
+                <div>Some Content</div>
+                <div>Some Content</div>
+                <div>Some Content</div>
+                <div>Some Content</div>
+                <div>Some Content</div>
+                <div>Some Content</div>
+                <div>Some Content</div>
+                <div>Some Content</div>
+                <div>Some Content</div>
+                <div>Some Content</div>
+                <div>Some Content</div>
+                <div>Some Content</div>
+                <div>Some Content</div>
+                <div>Some Content</div>
+                <div>Some Content</div>
             </div>
 
             <div data-role="footer" data-theme="d" data-position="fixed" id="footerMaster">
                 <div data-role="navbar" data-iconpos="top">
                     <ul>
                         <li><a href="#index" data-theme="d" data-icon="home"> Home </a></li>
-                        <li><a id="feeds_button" href="#leads" data-theme="d" data-icon="plus">Leads</a></li>
-                        <li><a href="#myPanel" data-theme="d" data-icon="grid"> Gadgets </a></li>
-                        <li><a href="#page9" data-theme="d" data-icon="info"> Profile </a></li>
-                        <li><a href="#page14" data-theme="d" data-icon="gear"> Settings </a></li>
+                        <li><a id="feeds_button" href="#leads" data-theme="d" data-icon="info">Leads</a></li>
+                        <li><a href="#" data-theme="d" data-icon="alert">TBA</a></li>
+                        <li><a href="#" data-theme="d" data-icon="alert">TBA</a></li>
+                        <li><a href="#" data-theme="d" data-icon="alert">TBA</a></li>
                     </ul>
                 </div>
             </div> 
@@ -72,29 +106,22 @@
             <div class="headerChild"></div>
 
             <div data-role="main" class="ui-content">
+                <table id="leads_table" class="display dataTables" cellspacing="0" width="100%">
+                    <thead>
+                        <tr>
+                            <td>ID</td>
+                            <td>Last Name</td>
+                            <td>First Name</td>
+                            <td>Email Address</td>
+                            <td>Contact No.</td>
+                            <td>Physical Address</td>
+                        </tr>
+                    </thead>
+                    <tbody>
 
-                <div class="lead_tabs ui-grid-c">
-                    <div class="tab ui-block-a">Fav</div>
-                    <div class="tab ui-block-b">Today</div>
-                    <div class="tab ui-block-c">Tomrw</div>
-                    <div class="tab ui-block-d">Older</div>
-                </div>
+                    </tbody>
 
-                <div id="leads_list">
-                    <div class="lead_group">
-                        <div class="ui-grid-a">
-                            <div class="ui-block-a">Name Surname</div>
-                            <div class="ui-block-b">Status:Good</div>
-                        </div>
-                        <div class="ui-grid-solo">
-                            <div class="ui-block-a">Contact Number: 000 000 0000</div>
-                        </div>
-                        <div class="ui-grid-solo">
-                            <div class="ui-block-a">Email Address: demo@email.co.za</div>
-                        </div>
-                    </div>
-                </div>
-
+                </table>
             </div>
 
             <div class="footerChild"></div>

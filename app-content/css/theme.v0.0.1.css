@@ -21,7 +21,7 @@
 }
 
 .lead_tabs {
-   margin-bottom:15px;
+    margin-bottom:15px;
 }
 
 .lead_group .ui-block-a {
@@ -34,4 +34,26 @@
 
 .lead_group {
     margin-bottom:10px;
+}
+
+/*Data Table Styling*/
+#leads th {
+    font-size: 12px;
+}
+
+#leads td { 
+    font-size: 11px;
+}
+
+#leads tbody tr {
+    line-height:.46em;
+}
+
+#leads label {
+    font-size:12px;
+}
+
+.dataTables_info, .dataTables_paginate {
+    font-size:15px;
+    line-height:.46em;
 }
