@@ -3,6 +3,8 @@
     Author     : David John Tennant - dev@homecloudsolutions.co.za | davidjohntennantwork@gmail.com - Home Cloud
 */
 
+/*Leads CSS */
+
 .lead_group {
     margin:0 auto;
     border: 2px solid black;
@@ -21,7 +23,7 @@
 }
 
 .lead_tabs {
-   margin-bottom:15px;
+    margin-bottom:15px;
 }
 
 .lead_group .ui-block-a {
@@ -34,4 +36,104 @@
 
 .lead_group {
     margin-bottom:10px;
+}
+
+/*Data Table Styling*/
+#leads th {
+    font-size: 12px;
+}
+
+#leads td { 
+    font-size: 11px;
+}
+
+#leads tbody tr {
+    line-height:1em;
+}
+
+#leads label {
+    font-size:12px;
+}
+
+.dataTables_info, .dataTables_paginate {
+    font-size:15px;
+    line-height:1em;
+}
+
+#leads {
+    max-height:300px
+}
+
+@font-face {
+    font-family: 'FontAwesome'; /*a name to be used later*/
+    src: url('../fonts/FontAwesome.otf'); /*URL to font*/
+}
+
+td.details-control {
+    position: relative;
+}
+
+tbody td.details-control:before {
+    cursor: pointer;
+    content: "\f0da";
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: inherit;
+
+    /*    color: #000;
+        font-size: 18px;
+        padding-right: 0.5em;
+        position: absolute;
+        top: 10px;
+        left: 0;*/
+}
+
+tbody tr.shown td.details-control:before {
+
+    content: "\f0d7";
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: inherit;
+
+    /*    color: #000;
+        font-size: 18px;
+        padding-right: 0.5em;
+        position: absolute;
+        top: 10px;
+        left: 0;*/
+}
+
+.ui-popup-container, .ui-popup {
+    height: 98%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left:0;
+}
+
+#new_lead {
+    overflow-y: scroll;
+}
+
+
+/*Pop Up - New Lead*/
+
+.popup_container {
+    padding: 5px 15px;
+}
+
+#datepicker {
+    margin: 0 auto;
+}
+
+#leads_table {
+}
+
+
+/*Toolbar Fix*/
+
+#leads div.ui-content {
+    margin-bottom: 56px;
 }
