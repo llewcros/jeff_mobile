@@ -43,13 +43,13 @@ $(document).ready(function () {
 var leads_leads = "leads.php";
 
 $("#leads").pagecontainer({
-  show: function( event, ui ) {}
+    show: function (event, ui) {}
 });
 
 $('#leads').on("pagecontainershow", function (event, ui) {
-    
+
     alert('leadspage');
-    
+
     $.ajax({
         type: "GET",
         url: leads_leads,
@@ -94,7 +94,7 @@ $(document).delegate("#leads", "pagebeforecreate", function () {
         type: "GET",
         url: leadmaster,
         dataType: 'json',
-        async:true,
+        async: true,
         data: {
             action: 'listLeadsBySalesperson',
             salesperson: 18
@@ -103,14 +103,153 @@ $(document).delegate("#leads", "pagebeforecreate", function () {
             var dlist_output = $("#leads_list");
 
             $.each(data.leads, function (i, e) {
-                dlist_output.append('<div id="leads_list"><div leadid="'+e.leadid+'" class="lead_group"><div class="ui-grid-solo"><div class="ui-block-a">'+e.firstname+' '+e.lastname+'</div></div><div class="ui-grid-solo"><div class="ui-block-a">Contact Number: '+e.contactno+'</div></div><div class="ui-grid-solo"><div class="ui-block-a">Email Address: '+e.emailaddress+'</div></div><div class="ui-grid-solo"><div class="ui-block-a">Address: '+e.ldphysicaladdress+'</div></div></div></div>');
+                dlist_output.append('<div id="leads_list"><div leadid="' + e.leadid + '" class="lead_group"><div class="ui-grid-solo"><div class="ui-block-a">' + e.firstname + ' ' + e.lastname + '</div></div><div class="ui-grid-solo"><div class="ui-block-a">Contact Number: ' + e.contactno + '</div></div><div class="ui-grid-solo"><div class="ui-block-a">Email Address: ' + e.emailaddress + '</div></div><div class="ui-grid-solo"><div class="ui-block-a">Address: ' + e.ldphysicaladdress + '</div></div></div></div>');
             });
         },
         error: function () {
             alert("Failure : Reload page and try again");
         }
-        
+
     });
 });
 
 
+//Ajax Start and Stop
+$(document).loader();
+
+$(document)
+        .ajaxStart(function () {
+            alert('Ajaxstart');
+            $(document).loader("show");
+        })
+        .ajaxStop(function () {
+            alert("Ajaxstop");
+            $(document).loader("hide");
+        })
+
+
+
+//DataTables
+
+$(document).ready(function () {
+    $('#leads_table').DataTable({
+        columns: [
+            {data: 'leadid'},
+            {data: 'lastname'},
+            {data: 'firstname'},
+            {data: 'emailaddress'},
+            {data: 'contactno'},
+            {data: 'ldphysicaladdress'}
+        ],
+        paging: false,
+        order: [1, 'DESC'],
+        responsive: true
+    });
+});
+
+//======= AJAX =======
+
+//Populate Leads by Sales Person
+$(document).delegate("#leads", "pagebeforecreate", function () {
+    $.ajax({
+        type: "GET",
+        url: leadmaster,
+        dataType: 'json',
+        data: {
+            action: 'listLeadsBySalesperson',
+            salesperson: 18
+        },
+        success: function (data) {
+            var t = $('#leads_table').DataTable();
+            t.clear();
+            t.rows.add(data.leads);
+            t.draw();
+        },
+        error: function () {
+            alert("Failure : Reload page and try again");
+        }
+
+    });
+});
+
+//Date Function
+
+function getdate() {
+    var d = new Date();
+
+    var monthNames = ["January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"
+    ];
+
+    var month = monthNames[d.getMonth()];
+    var day = d.getDate();
+    var year = d.getFullYear();
+
+    var fulldate = year + '/' +
+            (month < 10 ? '0' : '') + month + '/' +
+            (day < 10 ? '0' : '') + day;
+}
+
+$('#refresher').click(function () {
+    location.reload(true);
+    alert('refreshing');
+});
+
+
+
+//Global Var
+
+$(document).on("mobileinit", function (event) {
+
+    //create global variable storage
+    $.mobile.YourApplicationNameHere = {};
+
+    //use it like this anywhere in your code:
+    $.mobile.YourApplicationNameHere.globalVar1 = 1;
+    $.mobile.YourApplicationNameHere.globalVar2 = 2;
+    console.log("globalVar1 = " + $.mobile.YourApplicationNameHere.globalVar1);
+
+});
+
+
+//Push notifcations Test 
+
+document.addEventListener('deviceready', function () {
+    // cordova.plugins.notification.local is now available
+}, false);
+
+cordova.plugins.notification.local.hasPermission(function (granted) {
+    // console.log('Permission has been granted: ' + granted);
+});
+
+cordova.plugins.notification.local.registerPermission(function (granted) {
+    // console.log('Permission has been granted: ' + granted);
+});
+
+cordova.plugins.notification.local.on("trigger", function (notification) {
+    if (1 == 1)
+        return;
+    // After 10 minutes update notification's title 
+    setTimeout(function () {
+        cordova.plugins.notification.local.update({
+            id: 10,
+            title: "Meeting in 5 minutes!"
+        });
+    }, 600000);
+});
+
+
+//Open and Close Function
+
+        var row = $('#leads_table').DataTable().row(tr);
+
+        if (row.child.isShown()) {
+// This row is already open - close it
+            row.child.hide();
+            tr.removeClass('shown');
+        } else {
+// Open this row
+            row.child(format(row.data())).show();
+            tr.addClass('shown');
+        }
+    });

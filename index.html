@@ -4,33 +4,53 @@
         <title>Testing</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!--Scrolls-->
+        <!--Libs-->
         <link rel="stylesheet" href="app-content/css/jquery.mobile.min.css">
-        <link rel="stylesheet" href="app-content/css/theme.v0.0.1.css">
         <link rel="stylesheet" href="app-content/css/fontawesome.min.css">
-
+        <link rel="stylesheet" href="app-content/css/datatables.min.css">
+        <!--Custom-->
+        <link rel="stylesheet" href="app-content/css/theme.v0.0.1.css">
         <!--Spells-->
+
+        <!--Libs-->
         <script type="text/javascript" src="app-content/js/jquery.min.js"></script>
+        <script>
+            $(document).bind("mobileinit", "ready", function () {
+
+                // Make your jQuery Mobile framework configuration changes here!
+
+                $.mobile.allowCrossDomainPages = true;
+
+                //Cache Setting
+
+                $.mobile.page.prototype.options.domCache = true;
+
+                //create global variable storage
+                $.mobile.Jeffster = {};
+
+            });
+        </script>
         <script type="text/javascript" src="app-content/js/jquery.mobile.min.js"></script>
+        <script type="text/javascript" src="app-content/js/datatables.min.js"></script>
+        <!--Custom-->
         <script type="text/javascript" src="app-content/js/code.v0.0.1.js"></script>
+        <script>
+//            console.log("leadid = " + $.mobile.Jeffster.leadid);
+        </script>
     </head>
     <body>
         <div data-role="page" id="login">
-            <div data-role="header"></div>
-
+            <div data-role="header" data-tap-toggle="false"></div>
             <div data-role="main" class="ui-content">
-
-                <!--<form method="PUT" action="api/auth" data-ajax="false">-->
-                <form>
+                <form method="PUT" action="api/auth" data-ajax="false">
                     <label for="login_username">Username:</label><br>
-                    <input type="text" name="login_username" id="login_username" /><br>
+                    <input type="text" name="login_username" id="login_username"/><br>
                     <label for="login_password">Password:</label><br>
-                    <input type="password" name="login_password" id="login_password" /><br>
-                    <!--                <button id="login_submit" type="submit" data-theme="a">Submit</button>-->
-                    <button id="login_submit" data-theme="a">Submit</button>
+                    <input type="password" name="login_password" id="login_password"/><br>
+                    <button id="login_submit" type="submit" data-theme="a">Submit</button>
                 </form>
-
+                <a href="#index"><p>Click me to Bypass Security</p></a>
             </div>
-
             <div data-role="footer"></div> 
         </div>
 
@@ -43,62 +63,283 @@
                     <li>Page 3</li>
                 </ul>
             </div>
-            <div data-role="header" id="headerMaster">
-                <h1 class="header_title"></h1>
+            <div data-position="fixed" data-role="header" id="headerMaster" data-tap-toggle="false">
+                <h1 class="header_title">Default Header</h1>
                 <a href="#mainPanel" class="ui-btn-right ui-btn ui-btn-inline ui-corner-all ui-shadow"><i class="fa fa-bars" aria-hidden="true"></i></a>
                 <div id="refresher" class="ui-btn-left ui-btn ui-btn-inline ui-corner-all ui-shadow"><i class="fa fa-refresh" aria-hidden="true"></i></div>
             </div>
 
             <div data-role="main" class="ui-content">
                 <div>Some Content</div>
+                <div>Some Content</div>
+                <div>Some Content</div>
+                <div>Some Content</div>
+                <div>Some Content</div>
+                <div>Some Content</div>
+                <div>Some Content</div>
+                <div>Some Content</div>
+                <div>Some Content</div>
+                <div>Some Content</div>
+                <div>Some Content</div>
+                <div>Some Content</div>
+                <div>Some Content</div>
+                <div>Some Content</div>
+                <div>Some Content</div>
+                <div>Some Content</div>
+                <div>Some Content</div>
+                <div>Some Content</div>
+                <div>Some Content</div>
+                <div>Some Content</div>
+                <div>Some Content</div>
+                <div>Some Content</div>
+                <div>Some Content</div>
+                <div>Some Content</div>
+                <div>Some Content</div>
+                <div>Some Content</div>
+                <div>Some Content</div>
+                <div>Some Content</div>
+                <div>Some Content</div>
+                <div>Some Content</div>
             </div>
 
-            <div data-role="footer" data-theme="d" data-position="fixed" id="footerMaster">
+            <div data-role="footer" data-theme="d" data-position="fixed" id="footerMaster" data-tap-toggle="false" >
                 <div data-role="navbar" data-iconpos="top">
                     <ul>
                         <li><a href="#index" data-theme="d" data-icon="home"> Home </a></li>
-                        <li><a id="feeds_button" href="#leads" data-theme="d" data-icon="plus">Leads</a></li>
-                        <li><a href="#myPanel" data-theme="d" data-icon="grid"> Gadgets </a></li>
-                        <li><a href="#page9" data-theme="d" data-icon="info"> Profile </a></li>
-                        <li><a href="#page14" data-theme="d" data-icon="gear"> Settings </a></li>
+                        <li><a id="feeds_button" href="#leads" data-theme="d" data-icon="info">Leads</a></li>
+                        <li><a href="#" data-theme="d" data-icon="alert">TBA</a></li>
+                        <li><a href="#" data-theme="d" data-icon="alert">TBA</a></li>
+                        <li><a href="#" data-theme="d" data-icon="alert">TBA</a></li>
                     </ul>
                 </div>
             </div> 
 
         </div>
 
-        <div data-role="page" id="leads">
+        <div data-role="page" id="leads"> <!-- Leads Page Start -->
             <div class="panelChild"></div> 
-            <div class="headerChild"></div>
-
+            <div class="headerChild" data-tap-toggle="false"></div>
             <div data-role="main" class="ui-content">
 
-                <div class="lead_tabs ui-grid-c">
-                    <div class="tab ui-block-a">Fav</div>
-                    <div class="tab ui-block-b">Today</div>
-                    <div class="tab ui-block-c">Tomrw</div>
-                    <div class="tab ui-block-d">Older</div>
-                </div>
+                <!-- New Leads Popup -->
+                <div data-dismissible="true" data-position="fixed" data-role="popup" id="new_lead">
+                    <form id="new_lead_form" class="popup_container">
+                        <fieldset data-role="controlgroup">
+                            <legend>Title</legend>
+                            <select id="new_ld_title">
+                                <option value="default">Choose Title</option>
+                            </select>
+                        </fieldset>
+                        <p>
+                            <label for="new_ld_firstname">First Name</label>
+                            <input id="new_ld_firstname" name="new_ld_firstname" type="text" required>
+                        </p>
+                        <p>
+                            <label for="new_ld_lastname">Last Name</label>
+                            <input id="new_ld_lastname" name="new_ld_lastname" type="text" required>
+                        </p>
+                        <p>
+                            <label for="new_ld_contactno">Contact Number</label>
+                            <input id="new_ld_contactno" name="new_ld_contactno" type="number" required>
+                        </p>
+                        <p>
+                            <label for="new_ld_email">Email Address</label>
+                            <input id="new_ld_email" name="new_ld_email" type="email">
+                        </p>
+                        <div data-role="fieldcontain" id="datepicker">
+                            <fieldset data-role="controlgroup" data-type="horizontal">
+                                <legend>Date</legend>
+                                <label for="new_ld_day">Day</label>
+                                <select name="new_ld_day" id="new_ld_day">
+                                    <option value="01">01</option>
+                                    <option value="02">02</option>
+                                    <option value="03">03</option>
+                                    <option value="04">04</option>
+                                    <option value="05">05</option>
+                                    <option value="06">06</option>
+                                    <option value="07">07</option>
+                                    <option value="08">08</option>
+                                    <option value="09">09</option>
+                                    <option value="10">10</option>
+                                    <option value="11">11</option>
+                                    <option value="12">12</option>
+                                    <option value="13">13</option>
+                                    <option value="14">14</option>
+                                    <option value="15">15</option>
+                                    <option value="16">16</option>
+                                    <option value="17">17</option>
+                                    <option value="18">18</option>
+                                    <option value="19">19</option>
+                                    <option value="20">20</option>
+                                    <option value="21">21</option>
+                                    <option value="22">22</option>
+                                    <option value="23">23</option>
+                                    <option value="24">24</option>
+                                    <option value="25">25</option>
+                                    <option value="26">26</option>
+                                    <option value="27">27</option>
+                                    <option value="28">28</option>
+                                    <option value="29">29</option>
+                                    <option value="30">30</option>
+                                    <option value="31">31</option>
+                                </select>
 
-                <div id="leads_list">
-                    <div class="lead_group">
+                                <label for="new_ld_month">Month</label>
+                                <select name="new_ld_month" id="new_ld_month">
+                                    <option value="01">January</option>
+                                    <option value="02">February</option>
+                                    <option value="03">March</option>
+                                    <option value="04">April</option>
+                                    <option value="05">May</option>
+                                    <option value="06">June</option>
+                                    <option value="07">July</option>
+                                    <option value="08">August</option>
+                                    <option value="09">September</option>
+                                    <option value="10">October</option>
+                                    <option value="11">November</option>
+                                    <option value="12">December</option>
+                                </select>
+
+                                <label for="new_ld_year">Year</label>
+                                <select name="new_ld_year" id="new_ld_year"></select>
+
+                            </fieldset>
+                        </div>
+                        <p>
+                            <label for="new_ld_address">Address</label>
+                            <input id="new_ld_address" name="new_ld_address" type="email">
+                        </p>
+                        <fieldset data-role="controlgroup">
+                            <legend>Origin</legend>
+                            <select name="new_ld_origin" id="new_ld_origin">
+                                <option value="default">Choose Origin</option>
+                            </select>
+                        </fieldset>
+                        <fieldset data-role="controlgroup">
+                            <legend>Source</legend>
+                            <select name="new_ld_source" id="new_ld_source">
+                                <option value="default">Choose Source</option>
+                            </select>
+                        </fieldset>
+                        <label for="new_ld_comments">Comments:</label>
+                        <textarea name="new_ld_comments" id="new_ld_comments"></textarea>
+                        <input class="submit" id="new_lead_submit" type="submit" value="Submit"/>
+                        <button id="new_lead_close">Cancel<label><input type="checkbox" name="checkbox-1" />I'm Sure</label></button>
+                    </form>
+                </div> <!-- New Leads Popup Ends -->
+                <table id="leads_table" class="display dataTables" cellspacing="0" width="100%">
+                    <thead>
+                        <tr>
+                            <td id="new_lead_button"><a data-rel="popup" href="#new_lead"><i class="fa fa-plus-square" aria-hidden="true"></i> Add New Lead</a></td>
+                            <td>First Name</td>
+                            <td>Last Name</td>
+                            <td>Contact No.</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+            <div data-role="footer" data-position="fixed" class="footerChild"></div>
+        </div> <!-- End of Leads Page -->
+        <div data-role="page" id="full_lead">
+            <div class="panelChild"></div> 
+            <div data-role="header" class="headerChild" data-tap-toggle="false"></div>
+            <div data-role="main" class="ui-content">
+                <h5>Back Office</h5>
+                <div class="ui-grid-a">
+                    <div id="ldid" class="ui-block-a">leadID</div>
+                    <div id="ldid_val" class="ui-block-b"></div>
+                    <div id="ldsalespersonid" class="ui-block-a">Sales Person</div>
+                    <div id="ldsalespersonid_val" class="ui-block-b"></div>
+                    <div id="ldstatus" class="ui-block-a">Status</div>
+                    <div id="ldstatus_val" class="ui-block-b"></div>
+                    <div id="ldnextactivitydate" class="ui-block-a">Next Activity Date</div>
+                    <div id="ldnextactivitydate_val" class="ui-block-b"></div>
+                    <!--                    <div id="a" class="ui-block-a">Lastest Activity</div>
+                                        <div id="a" class="ui-block-b">**?** Some sort of Activity</div>-->
+                </div>
+                <h5>Client Details</h5>
+                <div class="ui-grid-a">
+                    <div id="ldtitle" class="ui-block-a">Title</div>
+                    <div id="ldtitle_val" class="ui-block-b"></div>
+                    <div id="ldlastname" class="ui-block-a">Last Name</div>
+                    <div id="ldlastname_val" class="ui-block-b"></div>
+                    <div id="ldfirstname" class="ui-block-a">First Name</div>
+                    <div id="ldfirstname_val" class="ui-block-b"></div>
+                    <div id="ldemailaddress" class="ui-block-a">Email Address</div>
+                    <div id="ldemailaddress_val" class="ui-block-b"></div>
+                    <div id="ldcontactno" class="ui-block-a">Contact No:</div>
+                    <div id="ldcontactno_val" class="ui-block-b"></div>
+                    <!--                    <div id="a" class="ui-block-a">**?** Contact No: W</div>
+                                        <div id="a" class="ui-block-b">**?** 000000000</div>
+                                        <div id="a" class="ui-block-a">**?** Contact No: Alt</div>
+                                        <div id="a" class="ui-block-b">**?** 000000000</div>-->
+                    <div id="ldphysicaladdress" class="ui-block-a">Physical Address</div>
+                    <div id="ldphysicaladdress_val" class="ui-block-b"></div>
+                </div>
+                <div class="ui-grid-solo">
+                    <div id="ldcomments" class="ui-block-a">Comments</div>
+                    <div id="ldcomments_val" class="ui-block-a"><textarea readonly style="resize:none"></textarea></div>
+                </div>
+                <div data-role="collapsible-set">
+                    <div data-role="collapsible" data-mini="true">
+                        <h5>Extra Client Information</h5>
                         <div class="ui-grid-a">
-                            <div class="ui-block-a">Name Surname</div>
-                            <div class="ui-block-b">Status:Good</div>
-                        </div>
-                        <div class="ui-grid-solo">
-                            <div class="ui-block-a">Contact Number: 000 000 0000</div>
-                        </div>
-                        <div class="ui-grid-solo">
-                            <div class="ui-block-a">Email Address: demo@email.co.za</div>
+                            <div id="ldlatitude" class="ui-block-a">Latitude</div>
+                            <div id="ldlatitude_val" class="ui-block-b"></div>
+                            <div id="ldlongitude" class="ui-block-a">Longitude</div>
+                            <div id="ldlongitude_val" class="ui-block-b"></div>
+                            <div id="ldorigin" class="ui-block-a">Origin</div>
+                            <div id="ldorigin_val" class="ui-block-b"></div>
+                            <div id="ldsource" class="ui-block-a">Source</div>
+                            <div id="ldsource_val" class="ui-block-b"></div>
                         </div>
                     </div>
+                    <div data-role="collapsible" data-mini="true">
+                        <h5>Extra Back Office Information</h5>
+                        <div class="ui-grid-a">
+                            <div id="ldcreatedby" class="ui-block-a">Created By</div>
+                            <div id="ldcreatedby_val" class="ui-block-b"></div>
+                            <div id="ldcreateddate" class="ui-block-a">Created Date</div>
+                            <div id="ldcreateddate_val" class="ui-block-b"></div>
+                            <div id="ldmodifiedby" class="ui-block-a">Modified By</div>
+                            <div id="ldmodifiedby_val" class="ui-block-b"></div>
+                            <div id="ldmodifieddate" class="ui-block-a">Modified Date</div>
+                            <div id="ldmodifieddate_val" class="ui-block-b"></div>
+                        </div>
+                    </div>
+                    <div data-role="collapsible" data-mini="true">
+                        <h5>Activities History</h5>
+                        <p>Data Table</p>
+                    </div>
                 </div>
-
             </div>
-
-            <div class="footerChild"></div>
-
+            <div data-role="footer" data-position="fixed" data-tap-toggle="false">
+                <div data-role="navbar" data-iconpos="top">
+                    <ul>
+                        <li><a id="lead_favourite" href="#" data-theme="d" data-icon="star">Favourite</a></li>
+                        <li><a href="#pop_call_menu" data-rel="popup" data-theme="d" data-icon="phone">Call</a></li>
+                        <li><a id="lead_email" href="mailto:david@homecloudsolutions.co.za" rel="external" data-theme="d" data-icon="mail">Email</a></li>
+                        <li><a href="#pop_sms_menu" data-rel="popup" data-theme="d" data-icon="comment">SMS</a></li>
+                        <li><a id="lead_map" href="https://maps.google.com?saddr=Current+Location&daddr=21+Churchill+Road,+Berea" data-theme="d" data-icon="navigation">Map</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div data-role="popup" id="pop_call_menu">
+                <ul>
+                    <li><a id="lead_call0" href="#" rel="external">Call 1</a></li>
+                    <li><a id="lead_call1" href="#" rel="external">Call 1</a></li>
+                    <li><a id="lead_call2" href="#" rel="external">Call 1</a></li>
+                </ul>
+            </div>
+            <div data-role="popup" id="pop_sms_menu">
+                <ul>
+                    <li><a id="lead_sms0" href="#" rel="external">SMS 1</a></li>
+                    <li><a id="lead_sms1" href="#" rel="external">SMS 2</a></li>
+                    <li><a id="lead_sms2" href="#" rel="external">SMS 3</a></li>
+                </ul>
+            </div>
         </div>
 
     </body>
